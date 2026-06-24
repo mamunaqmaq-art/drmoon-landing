@@ -1,28 +1,106 @@
-<script>
-document.getElementById("leadForm").addEventListener("submit", async function(e){
-  e.preventDefault();
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DrMoon Automation</title>
 
-  const data = {
-    name: document.getElementById("name").value,
-    email: document.getElementById("email").value,
-    message: document.getElementById("message").value
-  };
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+    }
 
-  try {
-    const res = await fetch("https://n8n.drmoon.xyz/webhook/lead", {
-      method: "POST",
-      headers: {"Content-Type":"application/json"},
-      body: JSON.stringify(data)
+    h1 {
+      color: #222;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    button {
+      background: #111;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #333;
+    }
+
+    #status {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Automation Services</h1>
+  <p>I build workflow automation systems using n8n.</p>
+
+  <h2>Contact Me</h2>
+
+  <form id="leadForm">
+    <input type="text" id="name" placeholder="Your Name" required>
+
+    <input type="email" id="email" placeholder="Your Email" required>
+
+    <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
+
+    <button type="submit">Send Message</button>
+  </form>
+
+  <p id="status"></p>
+
+  <script>
+    const webhookURL = "https://n8n.drmoon.xyz/webhook/lead";
+
+    document.getElementById("leadForm").addEventListener("submit", async function(e) {
+      e.preventDefault();
+
+      const status = document.getElementById("status");
+      status.innerText = "Sending...";
+
+      const data = {
+        name: document.getElementById("name").value.trim(),
+        email: document.getElementById("email").value.trim(),
+        message: document.getElementById("message").value.trim()
+      };
+
+      try {
+        const response = await fetch(webhookURL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(data)
+        });
+
+        if (response.ok) {
+          status.innerText = "✅ Message sent successfully!";
+          document.getElementById("leadForm").reset();
+        } else {
+          status.innerText = "❌ Failed to send message.";
+        }
+
+      } catch (error) {
+        console.error(error);
+        status.innerText = "❌ Error sending message.";
+      }
     });
+  </script>
 
-    const result = await res.json().catch(() => ({}));
-
-    document.getElementById("status").innerText = "Message sent successfully!";
-    console.log("n8n response:", result);
-
-  } catch (err) {
-    document.getElementById("status").innerText = "Error sending message!";
-    console.error(err);
-  }
-});
-</script>
+</body>
+</html>
