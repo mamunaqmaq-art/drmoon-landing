@@ -57,7 +57,12 @@
 
     <input type="email" id="email" placeholder="Your Email" required>
 
-    <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
+    <input type="number" id="phone" placeholder="Phone Number" required>
+
+    <input type="text" id="company" placeholder="Company Name" required>
+
+
+    <textarea id="requirement" placeholder="Business requirement" rows="5" required></textarea>
 
     <button type="submit">Send Message</button>
   </form>
@@ -73,12 +78,14 @@
       const status = document.getElementById("status");
       status.innerText = "Sending...";
 
+      
       const data = {
-        name: document.getElementById("name").value.trim(),
-        email: document.getElementById("email").value.trim(),
-        message: document.getElementById("message").value.trim()
-      };
-
+  name: document.getElementById("name").value.trim(),
+  email: document.getElementById("email").value.trim(),
+  phone: document.getElementById("phone").value.trim(),
+  company: document.getElementById("company").value.trim(),
+  requirement: document.getElementById("requirement").value.trim()
+};
       try {
         const response = await fetch(webhookURL, {
           method: "POST",
