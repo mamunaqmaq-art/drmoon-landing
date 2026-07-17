@@ -87,33 +87,17 @@
   requirement: document.getElementById("requirement").value.trim()
 };
       try {
-       const response = await fetch(webhookURL, {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json"
+       const response = await fetch(webhookURL,{
+    method:"POST",
+    headers:{
+        "Content-Type":"application/json"
     },
-    body: JSON.stringify(data)
+    body:JSON.stringify(data)
 });
 
 const result = await response.json();
 
-if (response.ok) {
-
-    status.innerText = "✅ " + result.message;
-
-    document.getElementById("leadForm").reset();
-
-} else {
-
-    status.innerText = "❌ " + result.message;
-
-}
-
-      } catch (error) {
-        console.error(error);
-        status.innerText = "❌ Error sending message.";
-      }
-    });
+status.innerText = result.message;
   </script>
 
 </body>
