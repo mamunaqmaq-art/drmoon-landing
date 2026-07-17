@@ -1,104 +1,246 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>DrMoon Automation</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 600px;
-      margin: 50px auto;
-      padding: 20px;
-    }
+    <title>DrMoon Automation | Business Workflow Automation</title>
 
-    h1 {
-      color: #222;
-    }
+    <meta name="description"
+        content="Professional Business Automation using n8n, HubSpot, Gmail, Google Sheets and AI.">
 
-    input, textarea {
-      width: 100%;
-      padding: 10px;
-      margin-top: 10px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-    }
-
-    button {
-      background: #111;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background: #333;
-    }
-
-    #status {
-      margin-top: 15px;
-      font-weight: bold;
-    }
-  </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <h1>Automation Services</h1>
-  <p>I build workflow automation systems using n8n.</p>
+    <!-- ================= HERO ================= -->
 
-  <h2>Contact Me</h2>
+    <header class="hero">
 
-  <form id="leadForm">
-    <input type="text" id="name" placeholder="Your Name" required>
+        <nav class="navbar">
 
-    <input type="email" id="email" placeholder="Your Email" required>
+            <div class="logo">
+                DrMoon Automation
+            </div>
 
-    <input type="number" id="phone" placeholder="Phone Number" required>
+            <ul>
 
-    <input type="text" id="company" placeholder="Company Name" required>
+                <li><a href="#services">Services</a></li>
 
+                <li><a href="#about">About</a></li>
 
-    <textarea id="requirement" placeholder="Business requirement" rows="5" required></textarea>
+                <li><a href="#contact">Contact</a></li>
 
-    <button type="submit">Send Message</button>
-  </form>
+            </ul>
 
-  <p id="status"></p>
+        </nav>
 
-  <script>
-    const webhookURL = "https://n8n.drmoon.xyz/webhook/lead";
+        <div class="hero-content">
 
-    document.getElementById("leadForm").addEventListener("submit", async function(e) {
-      e.preventDefault();
+            <h1>
+                Business Automation using n8n
+            </h1>
 
-      const status = document.getElementById("status");
-      status.innerText = "Sending...";
+            <p>
 
-      
-      const data = {
-  name: document.getElementById("name").value.trim(),
-  email: document.getElementById("email").value.trim(),
-  phone: document.getElementById("phone").value.trim(),
-  company: document.getElementById("company").value.trim(),
-  requirement: document.getElementById("requirement").value.trim()
-};
-      try {
-       const response = await fetch(webhookURL,{
-    method:"POST",
-    headers:{
-        "Content-Type":"application/json"
-    },
-    body:JSON.stringify(data)
-});
+                Save time.
+                Eliminate repetitive work.
+                Connect all your business apps with smart automation.
 
-const result = await response.json();
+            </p>
 
-status.innerText = result.message;
-  </script>
+            <a href="#contact" class="btn">
+                Get Free Consultation
+            </a>
+
+        </div>
+
+    </header>
+
+    <!-- ================= SERVICES ================= -->
+
+    <section id="services" class="services">
+
+        <h2>Services</h2>
+
+        <div class="service-grid">
+
+            <div class="card">
+
+                <h3>Lead Automation</h3>
+
+                <p>
+                    Capture leads from website, forms and social media automatically.
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Google Sheets Automation</h3>
+
+                <p>
+                    Sync and manage business data automatically.
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Gmail Automation</h3>
+
+                <p>
+                    Send automatic notifications, follow-ups and alerts.
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <h3>HubSpot CRM</h3>
+
+                <p>
+                    Create and update CRM contacts automatically.
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <h3>AI Automation</h3>
+
+                <p>
+                    Qualify leads using AI before sending them to CRM.
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <h3>API Integration</h3>
+
+                <p>
+                    Connect any REST API with your workflow.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ================= ABOUT ================= -->
+
+    <section id="about" class="about">
+
+        <h2>Why Choose Me</h2>
+
+        <div class="about-grid">
+
+            <div>✅ n8n Automation Specialist</div>
+
+            <div>✅ AI Workflow Integration</div>
+
+            <div>✅ HubSpot CRM</div>
+
+            <div>✅ Google Workspace Automation</div>
+
+            <div>✅ REST API Integration</div>
+
+            <div>✅ Professional Documentation</div>
+
+        </div>
+
+    </section>
+
+    <!-- ================= CONTACT ================= -->
+
+    <section id="contact" class="contact">
+
+        <h2>Let's Automate Your Business</h2>
+
+        <p>
+
+            Tell me about your project.
+
+        </p>
+
+        <form id="leadForm">
+
+            <input
+                type="text"
+                id="name"
+                placeholder="Full Name"
+                required>
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Business Email"
+                required>
+
+            <input
+                type="text"
+                id="phone"
+                placeholder="Phone Number"
+                required>
+
+            <input
+                type="text"
+                id="company"
+                placeholder="Company Name"
+                required>
+
+            <textarea
+                id="requirement"
+                rows="6"
+                placeholder="Describe your business automation requirement..."
+                required></textarea>
+
+            <button
+                type="submit"
+                id="submitBtn">
+
+                Send Request
+
+            </button>
+
+        </form>
+
+        <div id="status"></div>
+
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <h3>DrMoon Automation</h3>
+
+        <p>
+
+            Business Automation using n8n
+
+        </p>
+
+        <p>
+
+            Gmail • Google Sheets • HubSpot • AI • APIs
+
+        </p>
+
+        <p>
+
+            © 2026 DrMoon Automation
+
+        </p>
+
+    </footer>
+
+    <script src="script.js"></script>
 
 </body>
+
 </html>
